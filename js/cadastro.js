@@ -76,12 +76,9 @@ function excluirAluno(index) {
 function calcularIdade(dataNascimento) {
     const hoje = new Date();
     const nascimento = new Date(dataNascimento);
-    let idade = hoje.getFullYear() - nascimento.getFullYear();
 
-    const mes = hoje.getMonth() - nascimento.getMonth();
-    if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
-        idade--;
-    }
+    const diff = hoje - nascimento;
+    const idade = new Date(diff).getUTCFullYear() - 1970;
 
     return idade;
 }
